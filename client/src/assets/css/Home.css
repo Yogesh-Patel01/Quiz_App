@@ -62,3 +62,22 @@
 .correct-answer {
     color: rgb(8, 244, 8);
 }
+
+.list-group{
+    list-style: none;
+}
+.quiz-item{
+    height: 5rem;
+    padding: 10px;
+    border: 1px solid gray;
+}
+.quiz-item:hover{
+    background-color: rgba(207, 203, 203, 0.229);
+}
+.quiz-link{
+    color: black;
+    text-decoration: none;
+}
+.quiz-link:hover{
+    color: #4992e0;
+}

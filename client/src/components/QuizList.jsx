@@ -5,11 +5,14 @@ import "../assets/css/Home.css";
 
 const QuizList = () => {
   const [quizzes, setQuizzes] = useState([]);
+  const [currentQuizes, setCurrentQuizes] = useState([]);
+
   const [currentPage, setCurrentPage] = useState(1);
   const [quizzesPerPage] = useState(7);
   const [searchTerm, setSearchTerm] = useState("");
   const [loading, setLoading] = useState(true); // New state for loading
 
+  
   useEffect(() => {
     axios
       .get("http://localhost:7860/api/quizzes/all")
@@ -46,6 +49,14 @@ const QuizList = () => {
     setCurrentPage(1); // Reset page to 1 when searching
   };
 
+  const handleDelete = (index) =>{
+    alert("Delete CAlled " + index); // Update the state with the new array
+  }
+
+  const handleUpdate = () => {
+    alert("Update");
+  }
+
   return (
     <div className="container margin-top">
       <h2 className="mb-4">Available Quizzes</h2>
@@ -75,20 +86,38 @@ const QuizList = () => {
         <p>No quizzes available matching your search criteria.</p>
       ) : (
         <div>
-          <div className="list-group">
+          <ul className="list-group">
             {currentQuizzes.map((quiz, index) => (
-              <Link
-                key={quiz._id}
-                to={`/play/${quiz._id}`}
-                className="list-group-item list-group-item-action"
-              >
-                <h5 className="mb-1">{`Quiz.${indexOfFirstQuiz + index + 1} - ${
-                  quiz.title
-                }`}</h5>
-                <p className="mb-1">{quiz.description}</p>
-              </Link>
+              <li className="row quiz-item" ker={index}>
+                <div className="col-10 quiz-link">
+                  <Link
+                    key={quiz._id}
+                    to={`/play/${quiz._id}`}
+                    className="quiz-link"
+                    > 
+                    <h5 className="mb-1">{`Quiz.${indexOfFirstQuiz + index + 1} - ${
+                      quiz.title
+                    }`}</h5>
+                    <p className="mb-1">{quiz.description}</p>
+                  </Link>
+                </div>
+                <div className="col pt-2">
+                  {/* quize Delete button */}
+                  <button className="float-end btn btn-danger ms-4" onClick={() => handleDelete(index)}>
+                    <i className="fa-solid fa-trash-can"></i>
+                  </button>
+                  {/* Quiz update button */}
+                  <Link 
+                    className="float-end btn btn-primary"
+                    // add update page link
+                    to={`/updateQuiz/${quiz._id}`}
+                    >
+                    <i class="fa-solid fa-file-pen"></i>
+                  </Link>
+                </div>
+              </li>
             ))}
-          </div>
+          </ul>
 
           <nav aria-label="Page navigation example">
             <ul className="pagination justify-content-center mt-3">

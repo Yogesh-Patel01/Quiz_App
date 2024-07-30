@@ -14,6 +14,7 @@ import Login from "./components/Login";
 import Signup from "./components/RegistrationForm";
 import AdminPage from "./components/Admin";
 import User from "./components/User";
+import UpdateQuiz from "./components/UpdateQuize";
 const App = () => {
   const [userRole, setUserRole] = useState(
     localStorage.getItem("userRole") || ""
@@ -44,6 +45,7 @@ const App = () => {
         <Route path="/quiz/:id" element={<QuizDetail />} />
         <Route path="/auth" element={<Auth />} />
         <Route path="/play/:id" element={<QuizPlay />} />
+        <Route path="/updateQuiz/:id" element={<UpdateQuiz />} />
         <Route component={() => <div>Page Not Found</div>} />
 
         <Route

@@ -24,7 +24,7 @@ const Navbar = ({ userRole, handleLogout }) => {
         >
           <span className="navbar-toggler-icon"></span>
         </button>
-        <div className="collapse navbar-collapse" id="navbarSupportedContent" style={{marginLeft: 900}}>
+        <div className="collapse navbar-collapse" id="navbarSupportedContent" style={{marginLeft: 800}}>
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
               <Link className="nav-link" aria-current="page" to="/quizzes">
