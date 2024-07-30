@@ -12,6 +12,7 @@ const QuizList = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [loading, setLoading] = useState(true); // New state for loading
 
+  
   useEffect(() => {
     axios
       .get("http://localhost:7860/api/quizzes/all")
